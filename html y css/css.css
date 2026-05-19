@@ -79,6 +79,10 @@ display:block;
     background-color: #367d9b ;
     color: white;
 }
+.login-link{
+    text-decoration: none;
+    color: inherit;
+}
 /* fin del header */
 .contenedor__mapa{
     width: 100%;
