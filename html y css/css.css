@@ -77,9 +77,12 @@ display:block;
     height: 100%;
     border-radius: 4px;
     background-color: #367d9b ;
+    transition: all 0.3s  ease;
     color: white;
 }
 .login-link, .registrarse_link, .inicio-link{
+    height: 100%;
+    width: 100%;
     text-decoration: none;
     color: inherit;
 }
@@ -195,6 +198,8 @@ h2{
 }
 .botones1{
     background-color: #467889;
+    transition-property:background-color ;
+    transition: all 0.3s  ease;
     color: #fff;
     font-family: sans-serif;
     font-size: 17px;
@@ -204,12 +209,12 @@ h2{
     border-radius: 6px;
     margin: auto;
     margin-top: 20px;
-    padding: 6px;
+    padding: 6px 0;
     display: flex;
     justify-content: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.050);
 }
-.botones1:hover{
+.botones1:hover, .item_login:hover, .item_registrarse:hover{
     background-color:#437a92 ;
     box-shadow: #ffff;
     color: #2e3f46;
