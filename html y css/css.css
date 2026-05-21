@@ -79,7 +79,7 @@ display:block;
     background-color: #367d9b ;
     color: white;
 }
-.login-link{
+.login-link, .registrarse_link, .inicio-link{
     text-decoration: none;
     color: inherit;
 }
@@ -208,7 +208,11 @@ h2{
     display: flex;
     justify-content: center;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.050);
-
+}
+.botones1:hover{
+    background-color:#437a92 ;
+    box-shadow: #ffff;
+    color: #2e3f46;
 }
 /* ---final login--- */
 
