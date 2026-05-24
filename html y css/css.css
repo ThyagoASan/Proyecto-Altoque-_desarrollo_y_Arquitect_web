@@ -11,6 +11,14 @@ body{
     font-family:sans-serif;
 
 }
+.body-registrarse{
+    background: linear-gradient(
+        135deg,
+        #271d0f 10%,
+        #624d2e 40%,
+        #87623f 100%
+    );
+}
 /*---principal---*/
 .header {
     background-color: #eee;
@@ -88,23 +96,24 @@ display:block;
 }
 /* fin del header */
 .div{
-    display: flexbox;
+    display: flex;
+    justify-content: center;
+    align-content: space-between;
 }
 .div__mapa{
     width: 100%;
     height: 600px;
 }
 .div_busqueda{
-    display: flex;
-    align-items: center; 
-    width: 20%;        
-    position: relative;
-    display: inline-block; 
+    width: 20%;
+    padding-right: 30px;
+    max-width:150px;        
 }
 .details {
     background-color: white;
     padding: 10px;
     position: relative;
+    border-radius:3px;
 
 }
 
@@ -121,6 +130,7 @@ display:block;
     margin: 2px 0 0 0; 
     padding: 10px;    
     min-width: 100px; 
+    border-radius: 3px;
 }
 
 .details__lista-item {
@@ -130,11 +140,10 @@ display:block;
 }
 .div_busqueda__div_buscador{
 width: 60%;    
-height: 38.3px;
-position: relative;
 border-radius: 6px;
+height: 40px;
 background-color: white;
-display: inline-block;
+display: flex;
 }
 .label-icono {
     display: flex;
@@ -145,21 +154,22 @@ display: inline-block;
 }
 .img_lupa{
     width: 25px;
-    margin: 5px 0 0 5px;
+    margin: 7px 0 0 5px;
     position:absolute;
     display: block;
 }
 .input_buscador_localidad {
-    padding:0 6px;
-    margin: 0;
     margin-left: 30px;   
-     border-color: transparent;
-    border-radius: 6px;
-    height: 89%;
-    width: 90%;
+    padding-left: 5px;
+    border-radius: 3px 6px 6px 3px ;
+    width: 100%;
+    border-color: transparent;
 }
 .input_buscador_localidad:focus{
     outline: none;
+    background-color: #ccc;
+    border-left: 3px solid #555555 ;
+
 }
 
 /* ---final principal--- */
