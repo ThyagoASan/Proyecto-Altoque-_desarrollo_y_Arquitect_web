@@ -229,5 +229,120 @@ h2{
     box-shadow: #ffff;
     color: #2e3f46;
 }
+.servicios {
+    width: 90%;
+    margin: 40px auto;
+    color: white;
+}
+
+.servicios h2 {
+    text-align: center;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.tarjeta-servicio {
+    background-color: #ffffffdd;
+    color: #222;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px #0005;
+}
+
+.tarjeta-servicio h3 {
+    margin-top: 0;
+    color: #2e5562;
+}
+
+.tarjeta-servicio button {
+    background-color: #367d9b;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.tarjeta-servicio button:hover {
+    background-color: #2e5562;
+}
+
+.estrellas {
+    color: #d69b00;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .header__list {
+        flex-direction: column;
+        width: 100%;
+        padding: 0;
+    }
+
+    .div {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .div_busqueda,
+    .div_busqueda__div_buscador {
+        width: 90%;
+        max-width: none;
+    }
+
+    .formulario1 {
+        width: 80%;
+        min-width: auto;
+        margin-top: 25%;
+    }
+}
+/* PERFIL */
+
+.perfil {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perfil-card {
+    background-color: #ccc4;
+    color: white;
+    width: 50%;
+    min-width: 350px;
+    max-width: 500px;
+    padding: 35px;
+    border-radius: 10px;
+    box-shadow: 0 0 30px #0004;
+    text-align: center;
+}
+
+.perfil-foto {
+    width: 100px;
+    height: 100px;
+    margin: 15px auto;
+    border-radius: 50%;
+    background-color: #eee;
+    color: #2e5562;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+}
+
+.perfil-descripcion {
+    background-color: #ffffff22;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
 /* ---final login--- */
 

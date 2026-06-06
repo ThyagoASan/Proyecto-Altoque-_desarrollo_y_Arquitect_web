@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,10 @@
             </ul>
         </nav>
         <ul class="header__list">
-            <li class="header__list-item">dfsfdsdffd</li>
+            <li class="header__list-item">AlToque</li>
+            <li class="header__list-item"> <a class="inicio-link" href="publicar.html"> Publicar Servicio </a> </li>
             <li class="header__list-item item_login">
-            <a class="login-link" href="sesion.html">Log in</a> 
+            <a class="login-link" href="sesion.html">Iniciar Sesion</a> 
             </li>
             <li class="header__list-item item_registrarse"><a class="registrarse_link" href="registrarse.html">Registrarse</a></li>
         </ul>
@@ -42,11 +43,19 @@
                 </div>
 
             <div class="div_busqueda__div_buscador">
-                <label for="input_buscador_localidad" class=".label-icono">
+                <label for="input_buscador_localidad" class="label-icono">
                     <img class="img_lupa" for src="imagenes/lupa.png" alt="">
                 </label>
                 <input class="input_buscador_localidad" id="input_buscador_localidad" type="text" placeholder="Escribir la localidad">
             </div>
         </div>
+        <section class="servicios">
+    <h2>Servicios disponibles</h2>
+
+    <div class="tarjetas" id="contenedorServicios"></div>
+</section>
+
+<script src="script.js"></script>
+
     </body>
 </html>
