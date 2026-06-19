@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrarse</title>
-    <link rel="stylesheet" href="css.css">
-</head>
-<body class="body-registrarse">
-    <form class="formulario1">
-        <h2>Formulario Registrarse</h2>
-        <label class="label1" for="nombre_completo">Nombre Completo</label>
-        <input class="input1" type="text" id="nombre_completo" required minlength="6" placeholder="Pedro Ramirez">
-        <label class="label1">Email <br></label>
-        <input class="input1" type="email" required placeholder="PedroRamirez@gmail.com">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Registrarse</title>
+        <link rel="stylesheet" href="css.css" />
+    </head>
+    <body class="body-registrarse">
+        <form class="formulario1">
+            <h2>Formulario Registrarse</h2>
+            <label class="label1" for="nombre_completo">Nombre Completo</label>
+            <input
+                class="input1"
+                type="text"
+                id="nombre_completo_registro"
+                required
+                minlength="6"
+                placeholder="Pedro Ramirez"
+            />
+            <label class="label1">Email</label>
+            <input
+                class="input1"
+                id="email_registro"
+                type="email"
+                required
+                placeholder="PedroRamirez@gmail.com"
+            />
 
-        <label class="label2">Contraseña </label>
-            <input class="input1"  type="password" required minlength="6" placeholder="Pepito2605" >
-        <input class="botones1"  type="submit">
-        <button class="botones1" type="button"><a class="login-link" href="sesion.html">Iniciar Sesión</a></button>
-        <button class="botones1" type="button"><a class="inicio-link" href="pagina1.html">Volver Inicio</a></button>
-
-    </form>
-</body>
+            <label class="label2"
+                >Contraseña
+                <input
+                    class="input1"
+                    id="contraseña_registro"
+                    type="password"
+                    required
+                    minlength="6"
+                    placeholder="Pepito2605"
+            /></label>
+            <button class="botones1" type="submit">Registrarse</button>
+            <button class="botones1" type="button">
+                <a class="login-link" href="sesion.html">Iniciar Sesión</a>
+            </button>
+            <button class="botones1" type="button">
+                <a class="inicio-link" href="pagina1.html">Volver Inicio</a>
+            </button>
+        </form>
+        <script src="login_register.js"></script>
+    </body>
 </html>

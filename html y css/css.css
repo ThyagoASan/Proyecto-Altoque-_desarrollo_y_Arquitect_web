@@ -7,6 +7,7 @@ body {
     --color_azul_principal: #0f58e7;
     --color_verde-principal: #08aa3e;
     --color_rojo_principal: #aa0816;
+    --color_botones_inicio: #5e9bb0;
 }
 .body-registrarse {
     background: linear-gradient(135deg, #271d0f 10%, #624d2e 40%, #87623f 100%);
@@ -71,13 +72,13 @@ body {
 }
 .item_login,
 .item_registrarse {
-    border: 2px solid rgb(52, 86, 140);
+    border: 1px solid rgb(70, 115, 187);
     box-shadow: 0 0 5px #0004;
     margin: auto 8px auto 8px;
     padding: 7px 6px;
     height: 100%;
     border-radius: 4px;
-    background-color: #367d9b;
+    background-color: var(--color_botones_inicio);
     transition: all 0.3s ease;
     color: white;
 }
@@ -163,7 +164,8 @@ body {
 
 /* ---final principal--- */
 /*---login---*/
-.formulario1 {
+.formulario1,
+.formulario_login {
     color: #fff;
     font-size: 17px;
     background-color: #ccc4;
@@ -206,7 +208,7 @@ h2 {
     width: 90%;
     max-width: 250px;
     border: 3.5px solid #2e5562;
-    border-radius: 6px;
+    border-radius: 15px;
     margin: auto;
     margin-top: 20px;
     padding: 6px 0;
@@ -447,6 +449,7 @@ h2 {
 }
 .btm_volver {
     background-color: #eee;
+    border: 1px solid var(--color_azul_principal);
     color: var(--color_azul_principal);
     font-weight: 700;
 }
