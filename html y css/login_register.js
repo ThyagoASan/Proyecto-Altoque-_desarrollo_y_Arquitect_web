@@ -5,6 +5,7 @@ class usuario {
         this.contraseña = contraseña;
     }
 }
+
 verficar_usuario = (lista, user) => {
     return (promesa = new Promise((resolve) => {
         for (let usuario of lista) {

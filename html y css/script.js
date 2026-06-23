@@ -1,20 +1,41 @@
 const servicios = [
-    { nombre: "Juan Pérez", oficio: "Electricista", zona: "Castelar", estrellas: "★★★★★", descripcion: "Electricista con experiencia en instalaciones domiciliarias." },
-    { nombre: "María Gómez", oficio: "Limpieza", zona: "Morón", estrellas: "★★★★☆", descripcion: "Servicio de limpieza para hogares y oficinas." },
-    { nombre: "Carlos Ruiz", oficio: "Plomero", zona: "Ituzaingó", estrellas: "★★★★★", descripcion: "Reparación de pérdidas de agua y mantenimiento de cañerías." }
+    {
+        nombre: "Juan Pérez",
+        oficio: "Electricista",
+        zona: "Castelar",
+        estrellas: "★★★★★",
+        descripcion:
+            "Electricista con experiencia en instalaciones domiciliarias.",
+    },
+    {
+        nombre: "María Gómez",
+        oficio: "Limpieza",
+        zona: "Morón",
+        estrellas: "★★★★☆",
+        descripcion: "Servicio de limpieza para hogares y oficinas.",
+    },
+    {
+        nombre: "Carlos Ruiz",
+        oficio: "Plomero",
+        zona: "Ituzaingó",
+        estrellas: "★★★★★",
+        descripcion:
+            "Reparación de pérdidas de agua y mantenimiento de cañerías.",
+    },
 ];
 
 const contenedor = document.getElementById("contenedorServicios");
 const buscador = document.getElementById("input_buscador_localidad");
 
 if (contenedor) {
-    const publicacionesGuardadas = JSON.parse(localStorage.getItem("publicaciones")) || [];
+    const publicacionesGuardadas =
+        JSON.parse(localStorage.getItem("publicaciones")) || [];
     const todosLosServicios = servicios.concat(publicacionesGuardadas);
 
     function mostrarServicios(lista) {
         contenedor.innerHTML = "";
 
-        lista.forEach(servicio => {
+        lista.forEach((servicio) => {
             const tarjeta = document.createElement("article");
             tarjeta.classList.add("tarjeta-servicio");
 
@@ -23,7 +44,9 @@ if (contenedor) {
                 <p><strong>Oficio:</strong> ${servicio.oficio}</p>
                 <p><strong>Zona:</strong> ${servicio.zona}</p>
                 <p class="estrellas">${servicio.estrellas}</p>
-                <button onclick='verPerfil(${JSON.stringify(servicio)})'>Ver perfil</button>
+                <button onclick='verPerfil(${JSON.stringify(
+                    servicio
+                )})'>Ver perfil</button>
             `;
 
             contenedor.appendChild(tarjeta);
@@ -34,10 +57,11 @@ if (contenedor) {
         buscador.addEventListener("input", () => {
             const texto = buscador.value.toLowerCase();
 
-            const filtrados = todosLosServicios.filter(servicio =>
-                servicio.zona.toLowerCase().includes(texto) ||
-                servicio.oficio.toLowerCase().includes(texto) ||
-                servicio.nombre.toLowerCase().includes(texto)
+            const filtrados = todosLosServicios.filter(
+                (servicio) =>
+                    servicio.zona.toLowerCase().includes(texto) ||
+                    servicio.oficio.toLowerCase().includes(texto) ||
+                    servicio.nombre.toLowerCase().includes(texto)
             );
 
             mostrarServicios(filtrados);
@@ -68,13 +92,17 @@ if (formulario) {
             oficio: oficio,
             zona: zona,
             descripcion: descripcion,
-            estrellas: "Sin reseñas"
+            estrellas: "Sin reseñas",
         };
 
-        const publicacionesGuardadas = JSON.parse(localStorage.getItem("publicaciones")) || [];
+        const publicacionesGuardadas =
+            JSON.parse(localStorage.getItem("publicaciones")) || [];
         publicacionesGuardadas.push(nuevaPublicacion);
 
-        localStorage.setItem("publicaciones", JSON.stringify(publicacionesGuardadas));
+        localStorage.setItem(
+            "publicaciones",
+            JSON.stringify(publicacionesGuardadas)
+        );
 
         alert("Publicación creada correctamente");
         formulario.reset();
@@ -96,9 +124,11 @@ if (perfilNombre) {
         document.getElementById("perfil-nombre").textContent = perfil.nombre;
         document.getElementById("perfil-oficio").textContent = perfil.oficio;
         document.getElementById("perfil-zona").textContent = perfil.zona;
-        document.getElementById("perfil-estrellas").textContent = perfil.estrellas;
+        document.getElementById("perfil-estrellas").textContent =
+            perfil.estrellas;
         document.getElementById("perfil-descripcion").textContent =
-            perfil.descripcion || "Prestador disponible para realizar servicios a domicilio.";
+            perfil.descripcion ||
+            "Prestador disponible para realizar servicios a domicilio.";
     }
 }
 const botonContratar = document.getElementById("btn-contratar");
@@ -108,3 +138,40 @@ if (botonContratar) {
         alert("Solicitud de contratación enviada correctamente");
     });
 }
+
+const hacerPeticionesBD = (peticion) => {
+    return fetch(
+        "http://localhost/Proyecto-Altoque-_desarrollo_y_Arquitect_web/html%20y%20css/localidades.php",
+        {
+            method: "POST",
+            headers: { "Content-Type": "text/plain" },
+            body: peticion,
+        }
+    )
+        .then((res) => res.json())
+        .then((datos) => datos);
+};
+document.addEventListener("DOMContentLoaded", async () => {
+    if (
+        window.location.pathname ==
+        "/Proyecto-Altoque-_desarrollo_y_Arquitect_web/html%20y%20css/publicar.html"
+    ) {
+        const lista_localidades = await hacerPeticionesBD("leer_localidades");
+
+        let zona = document.getElementById("zona");
+        fragment = document.createDocumentFragment();
+        console.log(lista_localidades);
+        console.log(typeof lista_localidades);
+        console.log(Array.isArray(lista_localidades));
+        for (let localidad of lista_localidades) {
+            const option = document.createElement("option");
+            option.value = localidad;
+            option.textContent = localidad;
+            console.log(localidad);
+            fragment.appendChild(option);
+        }
+        zona.appendChild(fragment);
+    } else {
+        console.log("no funciono");
+    }
+});

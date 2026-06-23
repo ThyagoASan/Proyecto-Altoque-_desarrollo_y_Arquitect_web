@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publicar Servicio</title>
-    <link rel="stylesheet" href="css.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Publicar Servicio</title>
+        <link rel="stylesheet" href="css.css" />
+    </head>
+    <body>
+        <form class="formulario1" id="form-publicacion">
+            <h2>Publicar Servicio</h2>
 
-<form class="formulario1" id="form-publicacion">
+            <label class="label1">Nombre</label>
+            <input class="input1" id="nombre" type="text" />
 
-    <h2>Publicar Servicio</h2>
+            <label class="label1">Categoría</label>
+            <select class="input1" id="categoria">
+                <option>Electricista</option>
+                <option>Plomero</option>
+                <option>Limpieza</option>
+                <option>Jardinería</option>
+            </select>
 
-    <label class="label1">Nombre</label>
-    <input class="input1" id="nombre" type="text">
+            <label class="label1">Zona</label>
+            <input class="input1" id="zonas_input" type="text" list="zona" />
+            <datalist id="zona"></datalist>
+            <label class="label1">Descripción</label>
+            <textarea class="input1" id="descripcion"></textarea>
 
-    <label class="label1">Categoría</label>
-    <select class="input1" id="categoria">
-        <option>Electricista</option>
-        <option>Plomero</option>
-        <option>Limpieza</option>
-        <option>Jardinería</option>
-    </select>
+            <button class="botones1" type="submit">Publicar</button>
 
-    <label class="label1">Zona</label>
-    <input class="input1" id="zona" type="text">
+            <button class="botones1" type="button">
+                <a class="inicio-link" href="pagina1.html"> Volver </a>
+            </button>
+        </form>
 
-    <label class="label1">Descripción</label>
-    <textarea class="input1" id="descripcion"></textarea>
-
-    <button class="botones1" type="submit">
-        Publicar
-    </button>
-
-    <button class="botones1" type="button">
-        <a class="inicio-link" href="pagina1.html">
-            Volver
-        </a>
-    </button>
-
-</form>
-
-<script src="script.js"></script>
-
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>

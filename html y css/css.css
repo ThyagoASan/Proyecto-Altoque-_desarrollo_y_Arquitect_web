@@ -192,6 +192,9 @@ h2 {
     border-radius: 4px;
     box-shadow: 0 0 30px #fff5;
 }
+#zonas_input {
+    text-transform: capitalize;
+}
 .label1,
 .label2 {
     display: block;
