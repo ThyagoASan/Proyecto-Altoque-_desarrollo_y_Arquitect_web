@@ -44,7 +44,16 @@ const enviar_datos_modificar_publicacion = (
         .then((res) => res.text())
         .then((res) => {
             alert(res);
-            location.reload();
+            if (
+                res ==
+                "Error, usted no puede volver activar una publicación sin finalizarla primero."
+            ) {
+                document
+                    .getElementById("section_mis_trabajos")
+                    .scrollIntoView({ behavior: "smooth" });
+            } else {
+                location.reload();
+            }
         });
 };
 //boton copiar en el portapapeles

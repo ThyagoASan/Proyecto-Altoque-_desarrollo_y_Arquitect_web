@@ -24,6 +24,13 @@ if(mysqli_num_rows($respuesta)==0){
     echo("Atención la disponibilidad ingresada no es valida. Solo se permite 1(Activa) o 0(Desactivado).");
     exit;
 }
+$respuesta_historico_publicaciones=mysqli_query(get_conexion(),"select estado from historico_publicaciones where id_publicacion=$id");
+while ($estado=mysqli_fetch_array($respuesta_historico_publicaciones)){
+if($estado["estado"]=="Contratado en proceso")
+{
+    echo("Error, usted no puede volver activar una publicación sin finalizarla primero.");
+    exit;
+}}
 
 while ($publicacion=mysqli_fetch_array($respuesta)){
 
@@ -40,8 +47,7 @@ disponible=$disponible  where id='$id'");
 header("Content-Type: text/plain");
 if($publicacion["id"]==$id && $publicacion["categoria"]==$categoria && $publicacion["zona"]==$zona && 
 $publicacion["descripcion"]==$descripcion && $publicacion["disponible"]!=$disponible &&$disponible==1){
-    mysqli_query(get_conexion(),"update historico_publicaciones set estado='contratado en proceso' where id_publicacion=$id");
-    echo("Se activo la publicación con exito.");
+echo("Se activo la publicación con exito.");
 }
 else{
 echo("Se modifico la publicación con exito.");

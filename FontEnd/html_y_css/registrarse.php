@@ -40,6 +40,36 @@
                     minlength="6"
                     placeholder="Pepito2605"
             /></label>
+            <a href="#privacyModal" class="privacy-link">
+                Aviso de Privacidad
+            </a>
+            <div id="privacyModal" class="privacy-modal">
+                <div class="privacy-box">
+                    <a href="#" class="close">&times;</a>
+                    <h2>Aviso de Privacidad</h2>
+                    <p>
+                        En cumplimiento de la Ley Nº 25.326 de Protección de los Datos
+                        Personales de la República Argentina, los datos ingresados por los
+                        usuarios serán utilizados únicamente para el funcionamiento de la
+                        plataforma Al Toque.
+                    </p>
+                    <p>
+                        Los datos podrán emplearse para la creación de cuentas, autenticación,
+                        publicación de servicios y comunicación entre usuarios.
+                    </p>
+                    <p>
+                        La información no será comercializada ni compartida con terceros,
+                        salvo obligación legal.
+                    </p>
+                    <p>
+                        El usuario podrá solicitar la modificación o eliminación de sus datos
+                        cuando lo desee.
+                    </p>
+                    <p>
+                        Al utilizar la plataforma acepta este Aviso de Privacidad.
+                    </p>
+                </div>
+            </div>
             <button class="botones1" type="submit">Registrarse</button>
             <button class="botones1" type="button">
                 <a class="login-link" href="sesion.php">Iniciar Sesión</a>

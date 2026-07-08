@@ -12,8 +12,10 @@ if($sesion==null || $sesion==""){
         include("header_usuario.php");
     }else if($usuario["rol"]=="usuario_premium"){
         include("header_usuario_premium.php");
-    }elseif($usuario["rol"]=="admin"){
+    }elseif($usuario["rol"]=="administrador"){
         include("header_admin.php");
+    }else{
+        include("header_sin_sesion.php");
     }
     }
 }

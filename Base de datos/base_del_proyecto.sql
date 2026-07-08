@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-07-2026 a las 17:36:47
+-- Tiempo de generación: 08-07-2026 a las 21:10:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -47,7 +47,40 @@ INSERT INTO `comentarios` (`id`, `id_publicacion`, `nombre_usuario`, `comentario
 (8, 50, 'tomas1234', 'aaaaa', '2026-07-05'),
 (9, 53, 'tomas1234', 'Es una persona muy confiable.', '2026-07-06'),
 (10, 51, 'Pedro Perez', 'prueba comentarios', '2026-07-06'),
-(11, 62, 'maria Gonzalez', 'prueba comentario', '2026-07-06');
+(11, 62, 'maria Gonzalez', 'prueba comentario', '2026-07-06'),
+(12, 63, 'maria Gonzalez', 'comentario 1', '2026-07-06');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `estrellas`
+--
+
+CREATE TABLE `estrellas` (
+  `id_publicacion` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `estrellas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `estrellas`
+--
+
+INSERT INTO `estrellas` (`id_publicacion`, `id_usuario`, `estrellas`) VALUES
+(62, 3, 3),
+(57, 3, 4),
+(56, 3, 5),
+(61, 3, 4),
+(53, 3, 3),
+(62, 2, 5),
+(66, 3, 4),
+(62, 4, 5),
+(66, 5, 5),
+(59, 3, 4),
+(65, 3, 4),
+(60, 3, 4),
+(65, 4, 3),
+(66, 4, 5);
 
 -- --------------------------------------------------------
 
@@ -72,12 +105,9 @@ CREATE TABLE `historico_publicaciones` (
 --
 
 INSERT INTO `historico_publicaciones` (`id_publicacion`, `id_usuario`, `id_cliente`, `nombre_completo`, `categoria`, `zona`, `descripcion`, `disponible`, `estado`) VALUES
-(50, 3, NULL, 'tomas1234', 'Electricista', 'Beccar', 'hola', 1, 'No Contratado'),
-(51, 3, 11, 'tomas1234', 'Electricista', 'Banfield', 'conecto y desconecto tu hogar', 0, 'Finalizado'),
 (52, 4, 4, 'tomas21', 'Plomero', 'Bella Vista', 'llámame me muevo por la zona y alrededores', 0, 'Contratado en proceso'),
 (53, 4, NULL, 'tomas21', 'Limpieza', 'Bella Vista', 'limpio a domicilio', 1, 'No Contratado'),
 (54, 4, 4, 'tomas21', 'Jardinería', 'Bella Vista', 'conto pasto a domicilio', 0, 'Finalizado'),
-(55, 4, 3, 'tomas21', 'Plomero', 'Balcarce', 'Soluciono tus problemas de cañerías, antes que regreses a casa.', 0, 'Contratado en proceso'),
 (56, 4, NULL, 'tomas21', 'Jardinería', 'Bella Vista', 'conto pasto a domicilio', 1, 'No Contratado'),
 (57, 7, NULL, 'Ramiro', 'Electricista', 'Bahía Blanca', 'Instalaciones eléctricas seguras y eficientes.', 1, 'No Contratado'),
 (58, 7, NULL, 'Ramiro', 'Electricista', 'Castelar', 'Reparación de fallas eléctricas en el hogar.', 1, 'No Contratado'),
@@ -91,7 +121,7 @@ INSERT INTO `historico_publicaciones` (`id_publicacion`, `id_usuario`, `id_clien
 (66, 5, NULL, 'Juan Perez', 'Limpieza', 'Merlo', 'Servicio de limpieza rápido y confiable.', 1, 'No Contratado'),
 (67, 10, 10, 'Pedro Perez', 'Plomero', 'Escobar', 'Arreglo cañerias', 1, 'contratado en proceso'),
 (68, 11, 11, 'maria Gonzalez', 'Electricista', 'Banfield', 'prueba1', 1, 'No Contratado'),
-(69, 3, NULL, 'tomas1234', 'Electricista', 'Banfield', 'conecto y desconecto tu hogar', 1, 'No Contratado');
+(71, 3, 3, 'tomas1234', 'Electricista', 'Beccar', 'Soy una persona confiable y perfeccionista.', 1, 'No Contratado');
 
 -- --------------------------------------------------------
 
@@ -242,13 +272,10 @@ CREATE TABLE `publicaciones` (
 --
 
 INSERT INTO `publicaciones` (`id`, `id_usuario`, `nombre_completo`, `categoria`, `zona`, `descripcion`, `disponible`, `id_cliente`) VALUES
-(50, 3, 'tomas1234', 'Electricista', 'Beccar', 'hola', 1, 0),
 (52, 4, 'tomas21', 'Plomero', 'Bella Vista', 'llámame me muevo por la zona y alrededores', 0, 4),
 (53, 4, 'tomas21', 'Limpieza', 'Bella Vista', 'limpio a domicilio', 1, 0),
-(55, 4, 'tomas21', 'Plomero', 'Balcarce', 'Soluciono tus problemas de cañerías, antes que regreses a casa.', 0, 3),
 (56, 4, 'tomas21', 'Jardinería', 'Bella Vista', 'conto pasto a domicilio', 1, 0),
 (57, 7, 'Ramiro', 'Electricista', 'Bahía Blanca', 'Instalaciones eléctricas seguras y eficientes.', 1, 0),
-(58, 7, 'Ramiro', 'Electricista', 'Castelar', 'Reparación de fallas eléctricas en el hogar.', 1, 0),
 (59, 7, 'Ramiro', 'Electricista', 'Avellaneda', 'Mantenimiento de tableros y conexiones.', 1, 0),
 (60, 8, 'Julian', 'Plomero', 'Bahía Blanca', 'Solución rápida para pérdidas de agua.', 1, 0),
 (61, 8, 'Julian', 'Plomero', 'Bolívar', 'Instalación y reparación de cañerías.', 1, 0),
@@ -258,7 +285,7 @@ INSERT INTO `publicaciones` (`id`, `id_usuario`, `nombre_completo`, `categoria`,
 (65, 5, 'Juan Perez', 'Limpieza', 'Burzaco', 'Limpieza profunda para hogares y oficinas.', 1, 0),
 (66, 5, 'Juan Perez', 'Limpieza', 'Merlo', 'Servicio de limpieza rápido y confiable.', 1, 0),
 (67, 10, 'Pedro Perez', 'Plomero', 'Escobar', 'Arreglo cañerias', 1, 0),
-(69, 3, 'tomas1234', 'Electricista', 'Banfield', 'conecto y desconecto tu hogar', 1, 0);
+(71, 3, 'tomas1234', 'Electricista', 'Beccar', 'Soy una persona confiable y perfeccionista.', 1, 0);
 
 --
 -- Disparadores `publicaciones`
@@ -303,7 +330,8 @@ INSERT INTO `usuarios` (`id`, `nombre_completo`, `email`, `contraseña`, `rol`) 
 (8, 'Julian', 'julian@gmail.com', '123456', 'usuario'),
 (9, 'juanito', 'juanito@gmail.com', '1234456', 'usuario'),
 (10, 'Pedro Perez', 'pedro@gmail.com', '123456', 'usuario_premium'),
-(11, 'maria Gonzalez', 'maria@gmail.com', '123456', 'usuario');
+(11, 'maria Gonzalez', 'maria@gmail.com', '123456', 'usuario_premium'),
+(14, 'administrador', 'admin@gmail.com', '123456', 'administrador');
 
 --
 -- Índices para tablas volcadas
@@ -341,7 +369,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `localidades`
@@ -353,13 +381,13 @@ ALTER TABLE `localidades`
 -- AUTO_INCREMENT de la tabla `publicaciones`
 --
 ALTER TABLE `publicaciones`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

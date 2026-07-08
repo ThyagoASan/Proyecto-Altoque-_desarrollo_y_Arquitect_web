@@ -110,7 +110,7 @@ if(session_status()==PHP_SESSION_NONE){
                 <a href="publicar.php">Agregar Publicación</a>
             </button>
         </section>
-    <section class="admin__seccion">
+    <section class="admin__seccion" id="section_mis_trabajos">
             <h2>Mis Trabajos </h2>
             <h2>Actuales</h2>
             <table class="admin__tabla">
@@ -151,7 +151,8 @@ if(session_status()==PHP_SESSION_NONE){
                 </tbody>
                 
             </table>
-            <h2>Finalizados</h2>
+            <br><br>
+            <h2>Ya Finalizados</h2>
             <table class="admin__tabla">
             <thead>
                     <tr>

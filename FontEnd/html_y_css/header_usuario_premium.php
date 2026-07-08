@@ -2,7 +2,7 @@
     <body>
         <header class="header">
             <ul class="header__list">
-                <li class="header__list-item">AlToque</li>
+                <li class="header__list-item"><p>AlToque </p><img src="../imagenes/logo_al_toque.png" alt=""></li>
                 <li class="header__list-item">
                     <a class="inicio-link" href="publicar.php">
                         Publicar Servicio

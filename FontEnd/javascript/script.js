@@ -106,25 +106,92 @@ async function contratar_profecional() {
             });
     }
 }
+//control de estrellas.
+let estrellas = document.querySelectorAll(".star");
+if (estrellas) {
+    estrellas.forEach((estrella) => {
+        estrella.addEventListener("click", () => {
+            valor = estrella.dataset.value;
+            if (!estrella.classList.contains("rellenas")) {
+                estrellas.forEach((estrella1) => {
+                    valor_estrella = estrella1.dataset.value;
+                    if (valor_estrella <= valor) {
+                        estrella1.classList.add("rellenas");
+                    } else {
+                        estrella1.classList.remove("rellenas");
+                    }
+                });
+            } else if (estrella.dataset.value == get_estrella_mayor_valor()) {
+                estrellas.forEach((estrella1) => {
+                    estrella1.classList.remove("rellenas");
+                });
+            } else {
+                estrellas.forEach((estrella1) => {
+                    valor_estrella = estrella1.dataset.value;
+                    if (valor_estrella <= valor) {
+                        estrella1.classList.add("rellenas");
+                    } else {
+                        estrella1.classList.remove("rellenas");
+                    }
+                });
+            }
+        });
+    });
+}
+function get_estrella_mayor_valor() {
+    estrellas = document.querySelectorAll(".star");
+    valor_anterior = 0;
+    valor_mas_alto = 0;
+    estrellas.forEach((estrella) => {
+        if (estrella.classList.contains("rellenas")) {
+            if (valor_anterior < estrella.dataset.value) {
+                valor_mas_alto = estrella.dataset.value;
+            } else {
+                valor_anterior = estrella.dataset.value;
+            }
+        }
+    });
+    return valor_mas_alto;
+}
+//funcion enviar reseña estrellas
+function guardar_estrellas(e) {
+    array_datos = {
+        estrellas: get_estrella_mayor_valor(),
+        id_usuario: e.dataset.id_usuario,
+        id_publicacion: e.dataset.id_publicacion,
+    };
+    fetch("../../backend/guardar_estrellas.php", {
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(array_datos),
+        method: "POST",
+    }).then(location.reload());
+}
 
-// import { hacerPeticionesBD } from "./peticiones_php.js";
-// document.addEventListener("DOMContentLoaded", async () => {
-//     if (window.location.pathname.includes("publicar.html")) {
-//         const lista_localidades = await hacerPeticionesBD(
-//             "localidades.php",
-//             "leer_localidades"
-//         );
-//         let zona = document.getElementById("zona");
-//         let fragment = document.createDocumentFragment();
-//         for (let localidad of lista_localidades) {
-//             const option = document.createElement("option");
-//             option.value = localidad;
-//             option.textContent = localidad;
-//             console.log(localidad);
-//             fragment.appendChild(option);
-//         }
-//         zona.appendChild(fragment);
-//     } else {
-//         console.log("no funciono1");
-//     }
-// })
+//rellenar promedio de estrellas
+
+window.addEventListener("load", async () => {
+    if (window.location.pathname.includes("perfil.php")) {
+        id_publicacion = document.querySelector("body").dataset.id_publicacion;
+        promedio_estrellas = await fetch(
+            "../../backend/get_promedio_estrellas.php",
+            {
+                headers: { "Content-Type": "text/plain" },
+                body: id_publicacion,
+                method: "POST",
+            }
+        )
+            .then((res) => res.text())
+            .then((res) => res);
+        promedio_estrellas = Number(promedio_estrellas);
+        estrellas_promedio = document.querySelectorAll(".star_promedio");
+        estrellas_promedio.forEach((estrella_p) => {
+            if (estrella_p.dataset.value <= promedio_estrellas) {
+                estrella_p.classList.add("rellenas");
+            } else {
+                estrella_p.classList.remove("rellenas");
+            }
+        });
+        p_text_promedio = document.getElementById("cantidad_estrellas");
+        p_text_promedio.textContent = promedio_estrellas + " estrellas";
+    }
+});

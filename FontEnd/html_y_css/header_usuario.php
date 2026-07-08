@@ -1,7 +1,7 @@
 
         <header class="header">
             <ul class="header__list">
-                <li class="header__list-item">AlToque</li>
+                <li class="header__list-item"><p>AlToque</p><img src="../imagenes/logo_al_toque.png" alt=""></li>
                 <li class="header__list-item">
                     Bienvenido:
                     <?php echo $_SESSION["cliente"]; ?>

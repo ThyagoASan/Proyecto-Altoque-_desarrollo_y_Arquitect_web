@@ -16,6 +16,7 @@ body {
 .header {
     background-color: #eee;
     font-family: sans-serif;
+    min-height: 60px;
     width: 100%;
     justify-content: end;
     display: flex;
@@ -91,8 +92,34 @@ body {
     display: flex;
     align-items: center;
 }
+.header__list-item img {
+    height: 90px;
+    width: 90px;
+}
+.header__list-item:nth-child(1) {
+    user-select: none;
+    position: absolute;
+    left: 5px;
+}
+@media screen and (max-width: 670px) {
+    .header__list-item:nth-child(1) {
+        position: static;
+        padding: 0;
+        padding-left: 3px;
+    }
+    .header__list-item p {
+        display: none;
+        position: absolute;
+    }
+    .header__list-item:nth-child(2) {
+        padding-left: 0px;
+    }
+}
 .header__list-item:hover {
     background-color: #bbb;
+}
+.header__list-item:nth-child(1):hover {
+    background: none;
 }
 .usuario_premium_item,
 .usuario_admin_item,
@@ -227,7 +254,7 @@ body {
     font-size: 17px;
     background-color: #ccc4;
     width: 50%;
-    min-width: 370px;
+    min-width: 270px;
     max-width: 400px;
     padding: 40px 8%;
     margin: auto;
@@ -300,6 +327,59 @@ h2 {
     box-shadow: #ffff;
     color: #2e3f46;
 }
+/*inicio aviso privacidad registro*/
+.privacy-link {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    color: var(--color_azul_principal);
+    text-shadow: 0 0 6px #7ca7ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+.privacy-link:hover {
+    text-decoration: underline;
+}
+.privacy-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+    z-index: 9999;
+}
+.privacy-modal:target {
+    opacity: 1;
+    visibility: visible;
+}
+.privacy-box {
+    position: relative;
+    color: #333;
+    width: 650px;
+    max-width: 90%;
+    max-height: 80vh;
+    overflow: auto;
+    background: white;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+.close {
+    position: absolute;
+    right: 18px;
+    top: 12px;
+    font-size: 30px;
+    text-decoration: none;
+    color: #444;
+}
+.close:hover {
+    color: black;
+}
+/*fin de aviso privacidad registro*/
 .servicios {
     width: 90%;
     margin: 40px auto;
@@ -361,10 +441,6 @@ h2 {
 
 .tarjeta-servicio button:hover {
     background-color: #2e5562;
-}
-
-.estrellas {
-    color: #d69b00;
 }
 
 @media (max-width: 768px) {
@@ -506,9 +582,29 @@ h2 {
 .icono_perfil {
     color: var(--color_azul_principal);
 }
-#perfil-estrellas {
+#estrellas_numero {
+    padding: 0;
+    margin: 0;
+    align-items: start;
+    justify-content: center;
+    display: flex;
+}
+.star_promedio,
+.star {
+    user-select: none;
+    font-size: 35px;
+    color: #fff;
+    -webkit-text-stroke: #f6c326 0.7px;
+}
+#cantidad_estrellas {
+    align-self: end;
+    padding-left: 4px;
+}
+#cantidad_estrellas,
+.rellenas {
     color: #f6c326;
 }
+
 #perfil-oficio,
 #perfil-estrellas,
 #perfil-zona,
@@ -793,22 +889,29 @@ h2 {
 .a {
     margin-top: 100px;
 }
-.comentarios-seccion {
+
+.comentarios-seccion,
+.section_estrellas {
     margin: auto;
+    margin-bottom: 10px;
     width: 100%;
-    max-width: 600px; /* Alineado al ancho de tu perfil-card */
+    max-width: 600px;
     box-shadow: 0 0 10px #0003;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-
+.section_estrellas {
+    gap: 0;
+    align-items: center;
+    padding-bottom: 20px;
+}
 .comentarios-nuevo,
 .comentarios-lista {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 25px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Efecto sutil de tarjeta */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 .comentarios-seccion h3 {
@@ -821,7 +924,6 @@ h2 {
     gap: 8px;
 }
 
-/* Área de Texto */
 .comentarios-input-group textarea {
     width: 100%;
     height: 100px;
@@ -836,11 +938,11 @@ h2 {
 }
 
 .comentarios-input-group textarea:focus {
-    border-color: #3498db; /* Resaltado al escribir */
+    border-color: #3498db;
 }
 
-/* Botón de Enviar */
-.btn-enviar-comentario {
+.btn-enviar-comentario,
+.section_estrellas button {
     margin-top: 10px;
     background-color: #3498db;
     color: #ffffff;

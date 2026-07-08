@@ -28,7 +28,7 @@ $descripcion=$publicacion["descripcion"];
             rel="stylesheet"
         />
     </head>
-    <body class="a">
+    <body  data-id_publicacion="<?php echo $id_publicacion; ?>" class="a">
         <section class="perfil">
             <div class="perfil-card">
                 <div class="informacion_card">
@@ -65,7 +65,16 @@ $descripcion=$publicacion["descripcion"];
                                 >
                                 Calificación:</span
                             >
-                            <span id="perfil-estrellas">pentiente</span>
+                            <div id="estrellas_numero">
+                            <span>
+                                <span class="star_promedio" data-value="1">&#9733</span>
+                                <span class="star_promedio" data-value="2">&#9733</span>
+                                <span class="star_promedio" data-value="3">&#9733</span>
+                                <span class="star_promedio" data-value="4">&#9733</span>
+                                <span class="star_promedio" data-value="5">&#9733</span>
+                            </span>
+                            <p id="cantidad_estrellas"></p>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -100,9 +109,23 @@ $descripcion=$publicacion["descripcion"];
                 </div>
             </div>
         </section>
+        <?php 
+        if(!empty($_SESSION["cliente"])){
+        $respuesta_estrellas=mysqli_query(get_conexion(),"select * from estrellas where id_usuario=".$_SESSION["id_cliente"]." and id_publicacion=$id_publicacion");
+        if(mysqli_num_rows($respuesta_estrellas)<1){ ?>
+        <div class="section_estrellas">
+            <p>Reseñas</p>
+            <span id="stars">
+                <span class="star" data-value="1">&#9733</span>
+                <span class="star" data-value="2">&#9733</span>
+                <span class="star" data-value="3">&#9733</span>
+                <span class="star" data-value="4">&#9733</span>
+                <span class="star" data-value="5">&#9733</span>
+            </span>     
+            <button onclick="guardar_estrellas(this)" data-id_publicacion="<?php echo($id_publicacion)?>" data-id_usuario="<?php echo($_SESSION["id_cliente"])?>"><span class="material-icons">send</span>Enviar Reseña</button>
+        </div>
+        <?php } }?>
         <div class="comentarios-seccion">
-                
-                <!-- Formulario para dejar un comentario nuevo -->
                  <?php if(!empty($_SESSION["cliente"])){?>
                 <div class="comentarios-nuevo">
                     <h3>Dejar un comentario</h3>
@@ -115,14 +138,11 @@ $descripcion=$publicacion["descripcion"];
                         </button>
                     </form>
                 </div>
-                <?php }
-?>
-                <!-- Lista donde se renderizan los comentarios de la Base de Datos -->
+                <?php } ?>
                 <div class="comentarios-lista">
                     <h3>Comentarios de clientes</h3>
 
-                    <!-- Ejemplo de estructura de un comentario (Este bloque se repetirá con tu bucle While de PHP más adelante) -->
-                    <?php 
+                     <?php 
                     $respuesta=mysqli_query(get_conexion(),"select * from comentarios where id_publicacion=$id_publicacion order by id desc");
                     while($comentario = mysqli_fetch_array($respuesta)){
                         ?>

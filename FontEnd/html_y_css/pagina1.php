@@ -54,7 +54,7 @@ if(session_status()==PHP_SESSION_NONE){
     <h2>Servicios disponibles</h2>
     <div class="tarjetas" id="contenedorServicios">
     <?php 
-    $conexion = mysqli_connect("localhost", "root", "", "base_proyecto_wed");
+    $conexion = mysqli_connect("localhost", "root", "", "base_del_proyecto");
     if($_SESSION["id_cliente"]){
         $id_cliente=$_SESSION["id_cliente"];
     }else{
